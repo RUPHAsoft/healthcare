@@ -531,7 +531,7 @@ def manage_invoice_submit_cancel(doc, method):
 def set_invoiced(item, method, ref_invoice=None):
 	invoiced = False
 	if method == "on_submit":
-		# validate_invoiced_on_submit(item)
+		validate_invoiced_on_submit(item)
 		invoiced = True
 
 	if item.reference_dt == "Clinical Procedure":
