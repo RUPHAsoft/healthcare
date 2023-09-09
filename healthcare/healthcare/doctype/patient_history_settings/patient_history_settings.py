@@ -197,13 +197,12 @@ def validate_medical_record_required(doc):
 		frappe.flags.in_patch
 		or frappe.flags.in_install
 		or frappe.flags.in_setup_wizard
-		or get_module(doc) in ["Healthcare","Ruphasoft Core","Ruphasoft Clinic"]
+		or get_module(doc) not in ["Healthcare","Ruphasoft Core","Ruphasoft Clinic"]
 	):
 		return False
 
 	if doc.doctype not in get_patient_history_doctypes():
 		return False
-
 	return True
 
 
