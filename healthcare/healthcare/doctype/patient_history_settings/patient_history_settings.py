@@ -197,7 +197,7 @@ def validate_medical_record_required(doc):
 		frappe.flags.in_patch
 		or frappe.flags.in_install
 		or frappe.flags.in_setup_wizard
-		or get_module(doc) != "Healthcare"
+		or get_module(doc) not in ["Healthcare","Ruphasoft Core","Ruphasoft Clinic"]
 	):
 		return False
 
