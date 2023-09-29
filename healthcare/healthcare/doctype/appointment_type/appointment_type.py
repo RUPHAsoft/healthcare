@@ -32,7 +32,7 @@ class AppointmentType(Document):
 					)
 
 
-def get_billing_details(appointment_type, docname=None):
+def get_billing_details(appointment_type=None, docname=None):
 	def get_details(filters=None):
 		if not filters:
 			# fetch generic ones without department / service_unit
@@ -63,6 +63,7 @@ def get_billing_details(appointment_type, docname=None):
 	# use the generic items
 	if not details:
 		details = get_details()
+
 	return details
 
 

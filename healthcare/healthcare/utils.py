@@ -85,6 +85,13 @@ def get_appointments_to_invoice(patient, company):
 				service_item = details.get("service_item")
 				practitioner_charge = details.get("practitioner_charge")
 				income_account = get_income_account(appointment.practitioner, appointment.company)
+			else:
+				# details = get_appointment_billing_item_and_rate(appointment)
+				default = frappe.db.get_single_value("Healthcare Settings", "op_consulting_charge_item")
+
+				service_item = default
+				practitioner_charge = 0
+
 			appointments_to_invoice.append(
 				{
 					"reference_type": "Patient Appointment",
@@ -524,7 +531,7 @@ def manage_invoice_submit_cancel(doc, method):
 def set_invoiced(item, method, ref_invoice=None):
 	invoiced = False
 	if method == "on_submit":
-		validate_invoiced_on_submit(item)
+		# validate_invoiced_on_submit(item)
 		invoiced = True
 
 	if item.reference_dt == "Clinical Procedure":
