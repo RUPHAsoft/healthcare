@@ -131,14 +131,13 @@
    "report_hide": 1
   },
   {
+   "fetch_from": "patient.gender",
    "fieldname": "patient_sex",
    "fieldtype": "Link",
    "label": "Gender",
    "options": "Gender",
    "print_hide": 1,
-   "read_only": 1,
    "report_hide": 1,
-   "reqd": 1,
    "set_only_once": 1
   },
   {
@@ -595,7 +594,7 @@
    "link_fieldname": "reference_name"
   }
  ],
- "modified": "2023-06-21 00:31:52.282467",
+ "modified": "2023-09-29 16:06:25.014770",
  "modified_by": "Administrator",
  "module": "Healthcare",
  "name": "Lab Test",
