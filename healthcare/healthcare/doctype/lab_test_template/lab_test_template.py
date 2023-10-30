@@ -25,6 +25,12 @@ class LabTestTemplate(Document):
 			)
 			if price_list:
 				self.lab_test_rate = price_list[0].get("price_list_rate")
+		if self.is_billable:
+			frappe.flags.change_allowed = True
+
+	def after_insert(self):
+		if frappe.flags.change_allowed:
+			frappe.flags.change_allowed = False
 
 	def after_insert(self):
 		if not self.item and not self.link_existing_item:
@@ -55,7 +61,7 @@ class LabTestTemplate(Document):
 			try:
 				item = self.item
 				self.db_set("item", "")
-				frappe.delete_doc("Item", item)
+				# frappe.delete_doc("Item", item)
 			except Exception:
 				frappe.throw(_("Not permitted. Please disable the Lab Test Template"))
 

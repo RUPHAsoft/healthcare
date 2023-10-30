@@ -12,11 +12,11 @@ cur_frm.cscript.custom_refresh = function (doc) {
 frappe.ui.form.on('Lab Test', {
 	setup: function (frm) {
 		frm.get_field('normal_test_items').grid.editable_fields = [
-			{ fieldname: 'lab_test_name', columns: 3 },
-			{ fieldname: 'lab_test_event', columns: 2 },
-			{ fieldname: 'result_value', columns: 2 },
+			{ fieldname: 'lab_test_name', columns: 4 },
+			{ fieldname: 'result_value', columns: 1 },
+			{ fieldname: 'custom_result_option', columns: 2 },
 			{ fieldname: 'lab_test_uom', columns: 1 },
-			{ fieldname: 'normal_range', columns: 2 }
+			{ fieldname: 'normal_range', columns: 1 }
 		];
 		frm.get_field('descriptive_test_items').grid.editable_fields = [
 			{ fieldname: 'lab_test_particulars', columns: 3 },
@@ -42,6 +42,50 @@ frappe.ui.form.on('Lab Test', {
 					}
 				};
 			}
+		});
+
+		// options selecteed from coded NHDD dataset
+		frm.set_query("custom_result_option", "normal_test_items", function(doc, cdt, cdn) {
+			let row = frappe.get_doc(cdt, cdn);
+			let filtered_opts = [];
+			console.log("Enter filter with item: "+row.custom_item);
+			frappe.call({
+				method: 'ruphasoft_clinic.ruphasoft_clinic.utils.get_nhdd_coded_options',
+				args: { "item": row.custom_item },
+				async: false,
+				callback: function(r) {
+					if (!r.exc && r.message) {
+						// $.each(r.message, function(i, v) {
+						// 	filtered_opts.push(v.nhdd_id);
+						// });
+						filtered_opts = r.message;
+						console.dir(filtered_opts);
+						// refresh_field('custom_result_option', row.name, 'custom_in_house_test');
+					}
+				}
+			});
+			if (filtered_opts.length > 0) {
+				return {
+					filters: {
+						name: ["in", filtered_opts]
+					}
+				};
+			}else{
+				return {
+					filters: {
+						name: ["in", ""]
+					}
+				};
+			}
+			console.log("done");
+		});
+
+		frm.set_query("template", function(doc) {
+			return {
+				filters: {
+					custom_in_house_test: 1
+				}
+			};
 		});
 
 		if (frappe.defaults.get_default('lab_test_approval_required') && frappe.user.has_role('LabTest Approver')) {

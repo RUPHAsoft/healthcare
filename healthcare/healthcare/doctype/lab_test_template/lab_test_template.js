@@ -22,7 +22,8 @@ frappe.ui.form.on('Lab Test Template', {
 			return {
 				filters: {
 					'disabled': false,
-					'is_stock_item': false
+					'is_stock_item': false,
+					'item_group': 'Kenya National Health Data Dictionary - LAB TEST'
 				}
 			}
 		});
