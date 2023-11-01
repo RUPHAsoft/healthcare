@@ -220,7 +220,7 @@ def create_medical_departments():
 		"Gynaecology",
 		"Haematology",
 		"Maternity",
-		"Medical"
+		"Medical",
 		"Microbiology",
 		"Nephrology",
 		"Neurology",
@@ -802,7 +802,7 @@ def get_patient_history_config():
 				{"label": "Total Counts Completed", "fieldname": "total_counts_completed", "fieldtype": "Int"},
 			],
 		),
-		"Triage": (
+		"Vital Signs": (
 			"signs_date",
 			[
 				{"label": "Body Temperature", "fieldname": "temperature", "fieldtype": "Data"},
