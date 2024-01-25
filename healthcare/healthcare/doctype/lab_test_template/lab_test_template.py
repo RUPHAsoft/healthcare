@@ -19,7 +19,7 @@ from healthcare.healthcare.doctype.clinical_procedure_template.clinical_procedur
 
 class LabTestTemplate(Document):
 	def before_insert(self):
-		frappe.flags.change_allowed = True
+		frappe.flags.admin_rights = True
 		if self.link_existing_item and self.item:
 			price_list = frappe.db.get_all(
 				"Item Price", {"item_code": self.item}, ["price_list_rate"], order_by="valid_from desc"
@@ -32,11 +32,11 @@ class LabTestTemplate(Document):
 	def after_insert(self):
 		if not self.item and not self.link_existing_item:
 			create_item_from_template(self)
-		if frappe.flags.change_allowed:
-			frappe.flags.change_allowed = False
+		if frappe.flags.admin_rights:
+			frappe.flags.admin_rights = False
 
 	def validate(self):
-		frappe.flags.change_allowed = True
+		frappe.flags.admin_rights = True
 		if (
 			self.is_billable
 			and not self.link_existing_item
@@ -49,17 +49,17 @@ class LabTestTemplate(Document):
 
 		self.validate_conversion_factor()
 		self.enable_disable_item()
-		frappe.flags.change_allowed = False
+		frappe.flags.admin_rights = False
 
 	def on_update(self):
-		frappe.flags.change_allowed = True
+		frappe.flags.admin_rights = True
 		# If change_in_item update Item and Price List
 		if self.change_in_item:
 			update_item_and_item_price(self)
-		frappe.flags.change_allowed = False
+		frappe.flags.admin_rights = False
 
 	def on_trash(self):
-		frappe.flags.change_allowed = True
+		frappe.flags.admin_rights = True
 		# Remove template reference from item and disable item
 		if self.item:
 			try:
@@ -68,7 +68,7 @@ class LabTestTemplate(Document):
 				# frappe.delete_doc("Item", item)
 			except Exception:
 				frappe.throw(_("Not permitted. Please disable the Lab Test Template"))
-		frappe.flags.change_allowed = False
+		frappe.flags.admin_rights = False
 
 	def enable_disable_item(self):
 		if self.is_billable:
