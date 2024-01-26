@@ -114,11 +114,11 @@ doc_events = {
 		"on_cancel": "healthcare.healthcare.doctype.patient_history_settings.patient_history_settings.delete_medical_record",
 		"on_update_after_submit": "healthcare.healthcare.doctype.patient_history_settings.patient_history_settings.update_medical_record",
 	},
-	"Sales Invoice": {
-		"on_submit": "healthcare.healthcare.utils.manage_invoice_submit_cancel",
-		"on_cancel": "healthcare.healthcare.utils.manage_invoice_submit_cancel",
-		"validate": "healthcare.healthcare.utils.manage_invoice_validate",
-	},
+	# "Sales Invoice": {
+	# 	"on_submit": "healthcare.healthcare.utils.manage_invoice_submit_cancel",
+	# 	"on_cancel": "healthcare.healthcare.utils.manage_invoice_submit_cancel",
+	# 	"validate": "healthcare.healthcare.utils.manage_invoice_validate",
+	# },
 	"Company": {
 		"after_insert": "healthcare.healthcare.utils.create_healthcare_service_unit_tree_root",
 		"on_trash": "healthcare.healthcare.utils.company_on_trash",
