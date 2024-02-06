@@ -1,7 +1,6 @@
 {
  "actions": [],
  "allow_copy": 1,
- "beta": 0,
  "creation": "2017-11-17 15:52:48.324157",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -15,7 +14,8 @@
   "comments",
   "appointment_booked",
   "procedure_created",
-  "invoiced"
+  "invoiced",
+  "linked_procedure"
  ],
  "fields": [
   {
@@ -82,11 +82,19 @@
    "label": "Invoiced",
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "linked_procedure",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Linked Procedure",
+   "options": "Clinical Procedure",
+   "read_only": 1
   }
  ],
  "istable": 1,
  "links": [],
- "modified": "2020-02-26 15:42:33.988081",
+ "modified": "2024-02-05 23:20:13.754097",
  "modified_by": "Administrator",
  "module": "Healthcare",
  "name": "Procedure Prescription",
@@ -95,5 +103,6 @@
  "restrict_to_domain": "Healthcare",
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "track_changes": 1
 }
