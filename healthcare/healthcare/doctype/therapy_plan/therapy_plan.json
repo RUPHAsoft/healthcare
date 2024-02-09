@@ -9,6 +9,7 @@
   "naming_series",
   "patient",
   "patient_name",
+  "appointment",
   "invoiced",
   "column_break_4",
   "company",
@@ -126,13 +127,20 @@
    "no_copy": 1,
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "appointment",
+   "fieldtype": "Link",
+   "label": "Appoitment",
+   "options": "Patient Appointment"
   }
  ],
  "links": [],
- "modified": "2020-11-04 18:13:13.564999",
+ "modified": "2024-02-09 12:45:28.070944",
  "modified_by": "Administrator",
  "module": "Healthcare",
  "name": "Therapy Plan",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
@@ -174,6 +182,7 @@
  "search_fields": "patient",
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "title_field": "patient",
  "track_changes": 1
 }
