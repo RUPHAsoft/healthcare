@@ -77,7 +77,7 @@ def get_receivable_account(company):
 	return frappe.get_cached_value("Company", company, "default_receivable_account")
 
 
-def get_income_account(practitioner, company):
+def get_income_account(practitioner=None, company=None):
 	# check income account in Healthcare Practitioner
 	if practitioner:
 		income_account = get_account("Healthcare Practitioner", None, practitioner, company)

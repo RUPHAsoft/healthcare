@@ -11,7 +11,7 @@ app_color = "grey"
 app_email = "contact@frappe.io"
 app_license = "MIT"
 
-required_apps = ["frappe/erpnext"]
+required_apps = ["frappe/erpnext", "frappe/hrms", "frappe/payments"]
 
 # Includes in <head>
 # ------------------
