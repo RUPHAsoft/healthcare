@@ -32,7 +32,7 @@ class LabTestTemplate(Document):
 	def after_insert(self):
 		if not self.item and not self.link_existing_item:
 			create_item_from_template(self)
-		if frappe.flags.admin_rights:
+		if frappe.flags.admin_rights or frappe.session.user=="Administrator":
 			frappe.flags.admin_rights = False
 
 	def validate(self):
