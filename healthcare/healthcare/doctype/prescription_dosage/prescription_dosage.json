@@ -9,6 +9,13 @@
  "engine": "InnoDB",
  "field_order": [
   "dosage",
+  "interval",
+  "start_time",
+  "column_break_fmuz",
+  "strength",
+  "period",
+  "section_break_owpk",
+  "generate",
   "dosage_strength"
  ],
  "fields": [
@@ -26,10 +33,51 @@
    "fieldtype": "Table",
    "options": "Dosage Strength",
    "reqd": 1
+  },
+  {
+   "fieldname": "column_break_fmuz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "strength",
+   "fieldtype": "Float",
+   "label": "Default Strength",
+   "non_negative": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "section_break_owpk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "4",
+   "fieldname": "interval",
+   "fieldtype": "Float",
+   "label": "Interval",
+   "non_negative": 1,
+   "precision": "2"
+  },
+  {
+   "default": "Hour",
+   "fieldname": "period",
+   "fieldtype": "Select",
+   "label": "Period",
+   "options": "Hour\nDay\nWeek\nMonth"
+  },
+  {
+   "fieldname": "generate",
+   "fieldtype": "Button",
+   "label": "Generate"
+  },
+  {
+   "default": "09:00:00",
+   "fieldname": "start_time",
+   "fieldtype": "Time",
+   "label": "Default Start time"
   }
  ],
  "links": [],
- "modified": "2024-01-10 10:58:36.620363",
+ "modified": "2024-05-22 09:59:20.580514",
  "modified_by": "Administrator",
  "module": "Healthcare",
  "name": "Prescription Dosage",
