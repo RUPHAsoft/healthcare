@@ -13,7 +13,8 @@
   "column_break_4",
   "lab_test_comment",
   "lab_test_created",
-  "service_unit"
+  "service_unit",
+  "status"
  ],
  "fields": [
   {
@@ -69,11 +70,16 @@
    "in_list_view": 1,
    "label": "Service Unit",
    "options": "Healthcare Service Unit"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status"
   }
  ],
  "istable": 1,
  "links": [],
- "modified": "2024-05-20 20:07:00.998966",
+ "modified": "2025-04-19 13:08:37.396819",
  "modified_by": "Administrator",
  "module": "Healthcare",
  "name": "Lab Prescription",
